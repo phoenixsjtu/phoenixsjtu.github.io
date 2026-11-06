@@ -1,0 +1,38 @@
+[
+  {
+    "name": "direction-aware-tabs",
+    "registryUrl": "https://www.cult-ui.com/r/direction-aware-tabs.json",
+    "retrieved": "2026-11-06",
+    "registrySha256": "bfda44a08ad20dd916c8c6789766d133b97b0eb27edc7c2fe35c0d7ef7710fff",
+    "upstreamFiles": [
+      {
+        "path": "registry/default/ui/direction-aware-tabs.tsx",
+        "sha256": "e0fd337557453325a9cfcd25c803aa5aa57d137ebccbe12658415c7162c6a260"
+      }
+    ]
+  },
+  {
+    "name": "expandable",
+    "registryUrl": "https://www.cult-ui.com/r/expandable.json",
+    "retrieved": "2026-11-06",
+    "registrySha256": "6fcc4af473541fd9e71e734915bbdcfeaeb072ae953510532ecd4c05f1e55f7e",
+    "upstreamFiles": [
+      {
+        "path": "registry/default/ui/expandable.tsx",
+        "sha256": "49470c2fe5badf937c3a9ff523aef703cf9da9853f667a54da437ed0609e59a7"
+      }
+    ]
+  },
+  {
+    "name": "texture-card",
+    "registryUrl": "https://www.cult-ui.com/r/texture-card.json",
+    "retrieved": "2026-11-06",
+    "registrySha256": "44631c8acf375b4c88f4d5f2838d46994a1ba7d720f5535fa5b889ea32c9e295",
+    "upstreamFiles": [
+      {
+        "path": "registry/default/ui/texture-card.tsx",
+        "sha256": "5a1084d98795fdd84b9802d545835604920f7550cbbb06afa809f3c246f8a33a"
+      }
+    ]
+  }
+]

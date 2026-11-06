@@ -1,0 +1,20 @@
+<!doctype html><meta charset="utf-8"><title>Repository source preview</title><style>*{box-sizing:border-box}html,body{margin:0;background:#fff;color:#20252f;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC",sans-serif}body{padding:60px 72px;font-size:24px;line-height:1.75}h1{font-size:38px;line-height:1.35;overflow-wrap:anywhere;margin:0 0 30px}h2{font-size:30px;line-height:1.4;margin:32px 0 22px}h3{font-size:25px;margin:24px 0 14px}p{margin:18px 0}table{border-collapse:collapse;width:100%;font-size:22px}th,td{padding:14px;border:1px solid #dce0e8;text-align:left}th{background:#f5f7f9}a{color:#1858e8}pre{padding:24px;background:#f5f7f9;white-space:pre-wrap;font-size:20px;line-height:1.65}code{font-family:Menlo,monospace;font-size:.85em}hr{border:0;border-top:1px solid #dce0e8;margin:24px 0}.source{display:flex;justify-content:space-between;border-bottom:1px solid #cfd5df;padding-bottom:24px;margin-bottom:32px;font-size:20px;color:#525969}math{font-size:32px;display:block;text-align:center;padding:24px}</style><div class="source"><span>phoenixdyf</span><span>Jupyter Notebook</span></div><h1><strong>Deep transfer learning based on GAN</strong></h1>
+<hr />
+<p><strong>Envirionment</strong>: Tensorflow = 1.14.0 Keras = 2.2.4</p>
+<p><strong>A schematic introduction of implementation proposed adversarial-based models</strong></p>
+<p>In what follows, we explain how to implement a GAN in Keras for DTL-IFD</p>
+<p>We will train our GAN on 1D raw signal (2D frequency spectrm images) from CWRU dataset, a dataset of 10000 1024x1 monitoring time serie (10000 64x64 RGB images) belong to 10 classes.</p>
+<p>Schematically, the designed GAN based DTL looks like this:</p>
+<ul>
+<li><p>A <code>1D_CNN (2D_CNN)</code> network maps vectors of shape <code>1024x1(64x64x3)</code> to extracted feature of shape <code>(128,1)</code>.</p>
+</li>
+<li><p>A <code>source_classifier</code> network maps CNN feature <code>(128,1)</code> to a Probability output with ten categories<code>(10,)</code>.</p>
+</li>
+<li><p>A <code>domain_classifier</code> network maps CNN feature <code>(128,1)</code> to a binary score estimating the probability that the image is real.</p>
+</li>
+</ul>
+<p><em>Step 1</em> : We first train the <code>source_classifier</code> to make sure that the <code>1D_CNN (2D_CNN)</code> could extract feature for correct classfication task.</p>
+<p><em>Step 2</em> : We train the <code>domain_classifier</code> using examples of source and domain data along with &quot;real&quot;/&quot;fake&quot; labels,thus the <code>domain classifier</code> could tell which sample from source domain (labelled as true) or target domain (labelled as fake)</p>
+<p><em>Step 3</em> : We train the <code>1D_CNN (2D_CNN)</code>, at every step, we move the weights of <code>1D_CNN (2D_CNN)</code> in a direction that will make the discriminator more likely to classify the samples from target domain as &quot;true&quot; . I.e. we train the generator to fool the discriminator.</p>
+<p><strong>By iteratively conducting step 1 to step 3, the domain shift could be covered and the classfication task from source domain to target domain could be implemented</strong> </p>
+<h1>1 Import basic modules</h1>

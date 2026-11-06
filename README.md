@@ -1,19 +1,35 @@
-# Yafei Deng · Personal website
+# Yafei Deng — research & projects
 
-Personal portfolio for [@phoenixsjtu](https://github.com/phoenixsjtu).
+Bilingual personal homepage: [English](https://phoenixsjtu.github.io/?lang=en) · [中文](https://phoenixsjtu.github.io/?lang=zh).
 
-Live: https://phoenixsjtu.github.io
+Research in physics + AI, digital twins, and predictive maintenance. Built with React, TypeScript, Vite, Motion, Three.js, and locally adapted Cult UI components.
 
-## Development
+## Develop
 
-Serve this directory with `python3 -m http.server 8765` and open http://localhost:8765.
-No package install or build step is required. GitHub Pages publishes the main branch root.
+Use Node.js 22.12 or newer.
 
-## Editing
+```sh
+cd app
+npm ci
+npm run dev
+```
 
-- `index.html`: profile, career, project links and original wafer illustration.
-- `styles.css`: responsive layout, colors, keyboard focus and reduced-motion styles.
-- `script.js`: progressive enhancement for native expandable project notes.
-- `DESIGN-NOTES.md`: design references and verification notes.
+## Build and publish
 
-The GitHub profile README is maintained separately in [phoenixsjtu/phoenixsjtu](https://github.com/phoenixsjtu/phoenixsjtu).
+```sh
+node build.mjs
+```
+
+The script typechecks and builds `app/`, then copies its static output into the repository root. Review and commit both source and output. GitHub Pages publishes the `main` branch root; `.nojekyll` preserves the static build.
+
+## Source
+
+- `app/src/`: bilingual content, research tabs, image-led project cards, career history, and original ambient engineering scene.
+- `app/public/`: organization logos, project covers, source attribution and dependency licenses.
+- `app/third-party/cult-ui/`: registry sources and provenance for TextureCard, Expandable and DirectionAwareTabs.
+- `app/cover-sources/`: public repository excerpts used to render document covers.
+- `app/DESIGN.md`: design decisions.
+
+The TPTLN cover is the original paper first page. Other covers are typeset README/Notebook excerpts, not papers or synthetic experimental results. See [cover sources](projects/SOURCES.md). The background is an original conceptual visualization, not measured or simulated data.
+
+The current account is [phoenixsjtu](https://github.com/phoenixsjtu); earlier open-source work remains on [phoenixdyf](https://github.com/phoenixdyf). The GitHub profile README is maintained in [phoenixsjtu/phoenixsjtu](https://github.com/phoenixsjtu/phoenixsjtu).

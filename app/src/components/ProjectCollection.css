@@ -1,0 +1,42 @@
+.repository-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; align-items: start }
+.repository-item { min-width: 0 }
+/* Cult's TextureCard retains one quiet border around the document and its summary. */
+.repository-card { --radius: 12px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; color: var(--ink); transition: border-color .2s }
+.repository-card:hover, .repository-card:focus-within { border-color: #9bacc9 }
+.repository-card>div, .repository-card>div>div, .repository-card>div>div>div, .repository-card>div>div>div>div { border: 0; border-radius: inherit; background: none; color: inherit }
+.repository-cover { --cover-bg: #eef1f5; display: block; position: relative; height: 310px; overflow: hidden; border-radius: 11px 11px 0 0; background: var(--cover-bg); isolation: isolate }
+.repository-paper .repository-cover { --cover-bg: #e4eaf3 }
+.repository-notebook .repository-cover { --cover-bg: #e9eef7 }
+.repository-page { width: 82%; max-width: 440px; margin: 30px auto 0; background: #fff; box-shadow: 0 6px 20px #1723401a; transform: translateY(0); transition: transform .3s cubic-bezier(.22,1,.36,1) }
+.repository-page img { display: block; width: 100%; height: auto }
+.repository-cover-caption { position: absolute; inset: auto 0 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 24px; background: var(--cover-bg); color: #414d62; font-size: var(--font-meta); line-height: 1.5; border-top: 1px solid #d8dfe9 }
+.repository-cover-caption svg { width: 16px; height: 16px; flex-shrink: 0 }
+@media(hover:hover) { .repository-cover:hover .repository-page { transform: translateY(-6px) } }
+.repository-cover:focus-visible { outline-offset: -4px }
+.repository-body { padding: 26px 28px 22px; display: flex; flex-direction: column; min-height: 260px }
+.repository-topline { display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: var(--font-meta); margin-bottom: 14px }
+.repository-topline svg { width: 17px; height: 17px }
+.repository-card h3 { font-size: var(--font-title); font-weight: 600; line-height: 1.4; letter-spacing: -.02em; text-wrap: balance; margin-bottom: 10px }
+.repository-description { font-size: var(--font-body); line-height: 1.65; color: var(--muted) }
+.repository-actions { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: auto; padding-top: 20px; font-size: var(--font-meta) }
+.repository-actions a { display: inline-flex; gap: 7px; align-items: center; min-height: 44px; color: var(--blue); font-weight: 500 }
+.repository-actions a:hover, .repository-citation:hover { text-decoration: underline; text-underline-offset: 4px }
+.repository-actions svg { width: 16px; height: 16px }
+.repository-actions button { display: flex; align-items: center; gap: 8px; background: transparent; color: var(--muted); border: 0; min-height: 44px; padding: 6px 0 6px 8px; border-radius: 6px }
+.repository-actions button:hover { color: var(--ink) }
+.detail-symbol { font-size: 20px; line-height: 1; font-weight: 400; transition: transform .2s }
+.detail-symbol.expanded { transform: rotate(45deg) }
+.repository-details { padding-top: 20px; font-size: var(--font-meta); line-height: 1.7; color: var(--muted) }
+.repository-citation { display: flex; align-items: start; gap: 8px; margin-top: 14px; color: var(--blue) }
+.repository-citation svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 4px }
+.repository-path { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); overflow-wrap: anywhere }
+@media(max-width:900px) { .repository-grid { gap: 20px } .repository-cover { height: 270px } .repository-body { padding: 24px; min-height: 290px } }
+@media(max-width:640px) {
+  .repository-grid { grid-template-columns: 1fr; gap: 24px }
+  .repository-cover { height: clamp(235px, 65vw, 320px) }
+  .repository-page { margin-top: 24px }
+  .repository-body { min-height: 0; padding: 22px }
+  .repository-cover-caption { padding: 12px 22px }
+}
+@media(prefers-reduced-motion:reduce) { .repository-page, .repository-card, .detail-symbol { transition: none } .repository-cover:hover .repository-page { transform: none } }
+@media(prefers-contrast:more) { .repository-card, .repository-cover-caption { border-color: #828b99 } }

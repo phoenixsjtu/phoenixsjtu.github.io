@@ -1,0 +1,26 @@
+{
+  "retrieved": "2026-11-08",
+  "component": "Morphing Dialog",
+  "upstream_url": "https://github.com/ibelick/motion-primitives/blob/main/components/core/morphing-dialog.tsx",
+  "license_url": "https://github.com/ibelick/motion-primitives/blob/main/LICENCE.md",
+  "license": "MIT",
+  "copyright": "Copyright (c) 2024 ibelick",
+  "upstream_sha256": "3b2fd2038dd741cc5583eb0ca8be1ce4e774c73d17d9a73bf9bfc1abe3daf740",
+  "adapted_sha256": "04824ad4fc1495f448dbaa4be952907aa69657f975ba8c82011d618a85ea9b54",
+  "license_sha256": "94feb9992b6b0a188c6ea1f761a69c001f16a7f9c2198ea0b5bb43407aff5b82",
+  "dependencies": {
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "motion": "14.9.1"
+  },
+  "adaptations": [
+    "Vite imports and no Next.js dependencies",
+    "Inline close SVG; no Lucide or click-outside package",
+    "Native modal dialog supplies background inertness, keyboard focus containment and Escape handling",
+    "Fixed trigger ref, meaningful labels, matched title/description IDs and focus return",
+    "Shared layout IDs for container/image/title/subtitle/description preserved",
+    "Body scroll lock restored after exit and on unmount",
+    "Reduced motion disables shared-layout animation; viewport can scroll for tall paper pages",
+    "Close control portals to the native dialog outside the transformed content; fixed viewport positioning keeps it reachable while tall documents scroll."
+  ]
+}

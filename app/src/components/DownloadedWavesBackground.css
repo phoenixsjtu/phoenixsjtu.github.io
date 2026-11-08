@@ -1,0 +1,58 @@
+.downloaded-waves-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  isolation: isolate;
+  pointer-events: none;
+  background: #080a0f;
+}
+
+.downloaded-waves-background canvas,
+.downloaded-waves-background__fallback,
+.downloaded-waves-background__shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.downloaded-waves-background__fallback {
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 90% 30%, rgb(42 73 123 / 35%), transparent 64%),
+    radial-gradient(ellipse at 25% 100%, rgb(31 46 77 / 23%), transparent 60%),
+    #080a0f;
+}
+
+.downloaded-waves-background canvas {
+  z-index: 1;
+  display: block;
+  opacity: 0;
+  transition: opacity 600ms ease;
+}
+
+.downloaded-waves-background[data-renderer='vanta-waves'] canvas {
+  opacity: 1;
+}
+
+.downloaded-waves-background__shade {
+  z-index: 2;
+  background:
+    linear-gradient(90deg, rgb(8 10 15 / 82%) 0%, rgb(8 10 15 / 66%) 26%, rgb(8 10 15 / 22%) 54%, rgb(8 10 15 / 3%) 78%),
+    linear-gradient(180deg, rgb(8 10 15 / 18%) 0%, transparent 32%, rgb(8 10 15 / 18%) 100%);
+}
+
+@media (max-width: 767px) {
+  .downloaded-waves-background__shade {
+    background:
+      linear-gradient(90deg, rgb(8 10 15 / 76%), rgb(8 10 15 / 35%) 54%, rgb(8 10 15 / 10%)),
+      linear-gradient(180deg, rgb(8 10 15 / 18%), transparent 40%, rgb(8 10 15 / 26%));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .downloaded-waves-background canvas {
+    transition: none;
+  }
+}

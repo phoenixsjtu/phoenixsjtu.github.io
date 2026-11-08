@@ -1,0 +1,12 @@
+.mp-dialog-trigger { cursor: pointer; font: inherit; color: inherit; text-align: inherit }
+.mp-dialog { position: fixed; inset: 0; width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: clamp(16px, 4vw, 48px); border: 0; background: transparent; color: inherit; overflow: auto; overscroll-behavior: contain; scrollbar-gutter: stable }
+.mp-dialog:not([open]) { display: none }
+.mp-dialog::backdrop { background: rgb(15 18 26 / .52) }
+.mp-dialog-stage { min-height: 100%; display: flex; align-items: center; justify-content: center; pointer-events: none }
+.mp-dialog-content { position: relative; width: min(100%, 1080px); pointer-events: auto; background: #fff; border-radius: 12px; overflow: hidden }
+.mp-dialog-close { position: fixed; top: max(16px, env(safe-area-inset-top)); right: max(16px, env(safe-area-inset-right)); z-index: 2; display: grid; place-items: center; width: 44px; height: 44px; padding: 10px; border: 0; border-radius: 50%; background: #f0f2f5; color: #252a34; cursor: pointer }
+.mp-dialog-close:hover { background: #e4e8ef }
+.mp-dialog-close svg { width: 22px; height: 22px }
+.mp-dialog button:focus-visible, .mp-dialog a:focus-visible { outline: 2px solid var(--blue, #1858e8); outline-offset: 4px }
+@media(max-width:640px) { .mp-dialog { padding: 12px } .mp-dialog-close { top: max(12px, env(safe-area-inset-top)); right: max(12px, env(safe-area-inset-right)) } }
+@media(prefers-reduced-motion:reduce) { .mp-dialog::backdrop { transition: none } }

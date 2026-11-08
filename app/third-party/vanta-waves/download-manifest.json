@@ -1,0 +1,32 @@
+{
+  "repository": "https://github.com/tengbao/vanta",
+  "commit": "f8b351906688b56f0fc744e53bde81fc3c56f150",
+  "version": "0.5.24",
+  "downloaded": "2026-11-08",
+  "files": [
+    {
+      "path": "upstream/vanta.waves.js",
+      "source": "https://raw.githubusercontent.com/tengbao/vanta/f8b351906688b56f0fc744e53bde81fc3c56f150/src/vanta.waves.js",
+      "bytes": 5957,
+      "sha256": "be9c82f3bc5ecc957e25678bf71ab4bfc984e4d457e7d0957d9be2dac9798164"
+    },
+    {
+      "path": "upstream/_base.js",
+      "source": "https://raw.githubusercontent.com/tengbao/vanta/f8b351906688b56f0fc744e53bde81fc3c56f150/src/_base.js",
+      "bytes": 12646,
+      "sha256": "5be36a2f7bf66f4cf775be24bad7c4f4c6d8c9c43410a837a51b131045762a8b"
+    },
+    {
+      "path": "upstream/helpers.js",
+      "source": "https://raw.githubusercontent.com/tengbao/vanta/f8b351906688b56f0fc744e53bde81fc3c56f150/src/helpers.js",
+      "bytes": 2040,
+      "sha256": "74c3b6b3b10085c8bde6987ab8747b4d854dfec8d776cead17bbf9d0ee6fdb97"
+    },
+    {
+      "path": "LICENSE.md",
+      "source": "https://raw.githubusercontent.com/tengbao/vanta/f8b351906688b56f0fc744e53bde81fc3c56f150/LICENSE.md",
+      "bytes": 1048,
+      "sha256": "65df69dccc2a06fcf307e81da62c0f64b4abc03fe64a23944427a69642edadcb"
+    }
+  ]
+}

@@ -7,5 +7,4 @@ export default defineConfig({
   base: './',
   plugins: [react(), tailwindcss()],
   resolve: { alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) } },
-  build: { rollupOptions: { output: { manualChunks: { three: ['three'] } } } },
 })

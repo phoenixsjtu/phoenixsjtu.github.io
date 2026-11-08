@@ -13,4 +13,4 @@ TPTLN bibliographic record: Yafei Deng, Jun Lv, Delin Huang, Shichang Du. *Combi
 
 The public PDF is linked from the author's institutional publication page: https://me.sjtu.edu.cn/teacher_directory1/dushichang.html . The corresponding GitHub README explicitly identifies this paper. The full PDF is not bundled in this website. Original publication rights remain with their owners.
 
-Local excerpt inputs and rendering HTML are preserved in `app/cover-sources/`; they are review/source artifacts, not Vite production entries. Images are served locally. Covers link to the paper or original repository document. No unrelated publication is presented as the output of a repository, and no synthetic technical artwork is used.
+Local excerpt inputs and rendering HTML are preserved in `homepage/cover-sources/`; they are review/source artifacts, not Vite production entries. Images are served locally. Covers link to the paper or original repository document. No unrelated publication is presented as the output of a repository, and no synthetic technical artwork is used.

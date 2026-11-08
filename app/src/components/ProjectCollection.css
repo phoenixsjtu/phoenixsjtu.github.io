@@ -1,42 +1,92 @@
-.repository-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; align-items: start }
+.repository-collection { display: flex; flex-direction: column; gap: 0 }
 .repository-item { min-width: 0 }
-/* Cult's TextureCard retains one quiet border around the document and its summary. */
-.repository-card { --radius: 12px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; color: var(--ink); transition: border-color .2s }
-.repository-card:hover, .repository-card:focus-within { border-color: #9bacc9 }
-.repository-card>div, .repository-card>div>div, .repository-card>div>div>div, .repository-card>div>div>div>div { border: 0; border-radius: inherit; background: none; color: inherit }
-.repository-cover { --cover-bg: #eef1f5; display: block; position: relative; height: 310px; overflow: hidden; border-radius: 11px 11px 0 0; background: var(--cover-bg); isolation: isolate }
-.repository-paper .repository-cover { --cover-bg: #e4eaf3 }
-.repository-notebook .repository-cover { --cover-bg: #e9eef7 }
-.repository-page { width: 82%; max-width: 440px; margin: 30px auto 0; background: #fff; box-shadow: 0 6px 20px #1723401a; transform: translateY(0); transition: transform .3s cubic-bezier(.22,1,.36,1) }
+.repository-card { --radius: 8px; border: 0; border-radius: 8px; background: transparent; color: var(--ink) }
+.repository-card>div,.repository-card>div>div,.repository-card>div>div>div,.repository-card>div>div>div>div { border: 0; border-radius: inherit; background: none; color: inherit }
+.repository-card>div>div>div>div { display: grid; grid-template-columns: 47% 1fr; align-items: center }
+.repository-cover { position: relative; display: flex; align-items: center; justify-content: center; width: 100%; padding: 0; border: 0; overflow: hidden; background: #111a2d; border-radius: 4px; isolation: isolate }
+.repository-page { position: relative; display: block; background: #fff; width: 65%; max-width: 270px; flex-shrink: 0; box-shadow: 0 5px 14px #0005 }
 .repository-page img { display: block; width: 100%; height: auto }
-.repository-cover-caption { position: absolute; inset: auto 0 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 24px; background: var(--cover-bg); color: #414d62; font-size: var(--font-meta); line-height: 1.5; border-top: 1px solid #d8dfe9 }
-.repository-cover-caption svg { width: 16px; height: 16px; flex-shrink: 0 }
-@media(hover:hover) { .repository-cover:hover .repository-page { transform: translateY(-6px) } }
-.repository-cover:focus-visible { outline-offset: -4px }
-.repository-body { padding: 26px 28px 22px; display: flex; flex-direction: column; min-height: 260px }
-.repository-topline { display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: var(--font-meta); margin-bottom: 14px }
-.repository-topline svg { width: 17px; height: 17px }
-.repository-card h3 { font-size: var(--font-title); font-weight: 600; line-height: 1.4; letter-spacing: -.02em; text-wrap: balance; margin-bottom: 10px }
-.repository-description { font-size: var(--font-body); line-height: 1.65; color: var(--muted) }
-.repository-actions { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: auto; padding-top: 20px; font-size: var(--font-meta) }
-.repository-actions a { display: inline-flex; gap: 7px; align-items: center; min-height: 44px; color: var(--blue); font-weight: 500 }
-.repository-actions a:hover, .repository-citation:hover { text-decoration: underline; text-underline-offset: 4px }
-.repository-actions svg { width: 16px; height: 16px }
-.repository-actions button { display: flex; align-items: center; gap: 8px; background: transparent; color: var(--muted); border: 0; min-height: 44px; padding: 6px 0 6px 8px; border-radius: 6px }
-.repository-actions button:hover { color: var(--ink) }
-.detail-symbol { font-size: 20px; line-height: 1; font-weight: 400; transition: transform .2s }
-.detail-symbol.expanded { transform: rotate(45deg) }
-.repository-details { padding-top: 20px; font-size: var(--font-meta); line-height: 1.7; color: var(--muted) }
-.repository-citation { display: flex; align-items: start; gap: 8px; margin-top: 14px; color: var(--blue) }
-.repository-citation svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 4px }
-.repository-path { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); overflow-wrap: anywhere }
-@media(max-width:900px) { .repository-grid { gap: 20px } .repository-cover { height: 270px } .repository-body { padding: 24px; min-height: 290px } }
-@media(max-width:640px) {
-  .repository-grid { grid-template-columns: 1fr; gap: 24px }
-  .repository-cover { height: clamp(235px, 65vw, 320px) }
-  .repository-page { margin-top: 24px }
-  .repository-body { min-height: 0; padding: 22px }
-  .repository-cover-caption { padding: 12px 22px }
+.repository-preview-cue { display: flex; align-items: center; gap: 8px; position: absolute; bottom: 16px; right: 16px; font-size: .75rem; padding: 7px 12px; border-radius: 999px; background: #f2f4fa; color: #17243d }
+.repository-cover:hover .repository-preview-cue { background: #dbe5ff }
+.repository-featured { position: relative; margin-top: 8px; margin-bottom: 34px }
+.repository-featured .repository-card { border: 1px solid #b6c7e72e; border-radius: 8px; background: #0d121cd9 }
+.repository-featured .repository-cover { min-height: 450px; border-radius: 7px 0 0 7px; background-color: #0d1629; background-image: linear-gradient(#94aeec0c 1px,transparent 1px),linear-gradient(90deg,#94aeec0c 1px,transparent 1px); background-size: 56px 56px }
+.repository-featured .repository-cover::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 55% 40%,#345fcf4a,transparent 75%) }
+.repository-featured .repository-body { padding: 40px }
+.repository-kind { color: var(--muted); font-size: .8125rem; line-height: 1.6; margin-bottom: 14px }
+.repository-featured .repository-kind { color: #afc1e5 }
+.repository-card h3 { font-weight: 450; margin-bottom: 14px }
+.repository-featured h3 { font-size: 2rem; line-height: 1.3; letter-spacing: -.025em; max-width: 390px }
+.repository-description { color: var(--muted); font-size: var(--font-body); line-height: 1.8 }
+.repository-authors { font-size: .8125rem; line-height: 1.75; color: var(--muted); margin-top: 24px }
+.repository-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 26px; font-size: var(--font-meta); margin-top: 24px }
+.repository-actions a { display: inline-flex; align-items: center; gap: 7px; min-height: 40px }
+.repository-actions a:hover,.project-dialog-links a:hover { color: #fff }
+.repository-actions svg { width: 15px; height: 15px }
+.repository-actions .paper-link { color: var(--blue) }
+.repository-resource { padding-block: 28px; border-top: 1px solid var(--line) }
+.repository-resource .repository-card { border-radius: 0 }
+.repository-resource .repository-card>div>div>div>div { grid-template-columns: 164px 1fr; gap: 32px; align-items: start }
+.repository-resource .repository-cover { height: 142px; background: #141d30; border: 1px solid #b6c7e724 }
+.repository-resource .repository-page { width: 84%; margin-top: 28px; align-self: flex-start; max-width: none }
+.repository-resource .repository-preview-cue { padding: 5px; bottom: 6px; right: 6px }
+.repository-resource .repository-preview-cue span { display: none }
+.repository-resource .repository-kind { margin-bottom: 6px }
+.repository-resource h3 { margin-bottom: 7px; font-size: var(--font-title); font-weight: 500 }
+.repository-resource .repository-description { font-size: var(--font-meta); max-width: 570px }
+.repository-resource .repository-actions { margin-top: 8px; font-size: .8125rem }
+.mp-dialog::backdrop { background: rgb(2 4 9 / .8) }
+.mp-dialog-content.project-dialog { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(280px,1fr); max-width: 1080px; background: #0e1420; color: var(--ink); border: 1px solid #b6c7e738; border-radius: 8px }
+.project-dialog-art { background: #151f33; display: flex; align-items: flex-start; justify-content: center; padding: 28px; min-width: 0 }
+.project-dialog-art img { display: block; width: 100%; height: auto; background: #fff; box-shadow: 0 4px 14px #0004 }
+.project-dialog-body { padding: 70px 36px 36px }
+.project-dialog h2 { font-size: 1.75rem; line-height: 1.4; letter-spacing: -.025em; margin-bottom: 20px }
+.project-dialog-body>.repository-kind { margin-bottom: 12px }
+.project-dialog-body p { font-size: var(--font-body); line-height: 1.85; color: #b7c2d8 }
+.project-dialog-citation { padding-top: 24px; margin-top: 24px; border-top: 1px solid var(--line) }
+.project-dialog-citation p { color: var(--ink); font-size: var(--font-meta) }
+.project-dialog-citation span { display: block; color: var(--muted); font-size: .8125rem; line-height: 1.8; margin-top: 10px }
+.project-dialog-links { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 26px; font-size: var(--font-meta) }
+.project-dialog-links a { display: inline-flex; align-items: center; gap: 7px; min-height: 44px }
+.project-dialog-links .paper-link { color: var(--blue) }
+.project-dialog-links svg { width: 15px; height: 15px }
+.project-dialog-body .project-dialog-caption { margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--line); font-size: .8125rem; color: var(--muted) }
+@media(max-width:900px) {
+  .repository-featured .repository-cover { min-height: 400px }
+  .repository-featured .repository-body { padding: 28px }
+  .repository-featured h3 { font-size: 1.625rem }
+  .repository-resource .repository-card>div>div>div>div { grid-template-columns: 140px 1fr; gap: 24px }
+  .project-dialog-body { padding-inline: 28px }
 }
-@media(prefers-reduced-motion:reduce) { .repository-page, .repository-card, .detail-symbol { transition: none } .repository-cover:hover .repository-page { transform: none } }
-@media(prefers-contrast:more) { .repository-card, .repository-cover-caption { border-color: #828b99 } }
+@media(max-width:640px) {
+  .repository-featured .repository-card>div>div>div>div { display: block }
+  .repository-featured .repository-cover { min-height: 350px; height: 350px; border-radius: 7px 7px 0 0 }
+  .repository-featured .repository-page { width: 210px; max-width: 65% }
+  .repository-featured .repository-body { padding: 28px 24px }
+  .repository-featured h3 { font-size: 1.625rem; max-width: none }
+  .repository-authors { margin-top: 18px }
+  .repository-actions { margin-top: 18px }
+  .repository-featured { margin-bottom: 26px }
+  .repository-resource { padding-block: 24px }
+  .repository-resource .repository-card>div>div>div>div { grid-template-columns: 96px 1fr; gap: 18px }
+  .repository-resource .repository-cover { height: 120px }
+  .repository-resource .repository-page { margin-top: 16px }
+  .repository-resource h3 { font-size: 1rem; line-height: 1.5 }
+  .repository-resource .repository-description { font-size: .875rem; line-height: 1.7 }
+  .repository-resource .repository-kind { font-size: .75rem }
+  .mp-dialog-content.project-dialog { display: flex; flex-direction: column }
+  .project-dialog-art { padding: 24px; order: 2 }
+  .project-dialog-body { padding: 28px 24px 22px; order: 1 }
+  .project-dialog h2 { padding-right: 35px; font-size: 1.375rem; margin-bottom: 14px }
+  .project-dialog-body>.repository-kind { padding-right: 38px }
+  .project-dialog-citation { padding-top: 16px; margin-top: 18px }
+  .project-dialog-links { margin-top: 18px }
+  .project-dialog-body .project-dialog-caption { margin-top: 12px }
+}
+@media(max-width:370px) {
+  .repository-resource .repository-card>div>div>div>div { grid-template-columns: 78px 1fr; gap: 14px }
+  .repository-resource .repository-cover { height: 106px }
+  .repository-featured .repository-cover { min-height: 300px; height: 300px }
+  .repository-featured .repository-body { padding: 24px 18px }
+}
+@media(prefers-contrast:more) { .repository-featured .repository-card,.repository-resource { border-color: #91a2c1 } }

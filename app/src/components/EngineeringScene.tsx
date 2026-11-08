@@ -3,7 +3,7 @@ import * as THREE from 'three'
 import './EngineeringScene.css'
 
 // Original conceptual field on a wafer-like surface. No measured data or solver claims.
-export default function EngineeringScene({ paused }: { paused: boolean }) {
+export default function EngineeringScene({ paused, compact = false }: { paused: boolean; compact?: boolean }) {
   const hostRef = useRef<HTMLDivElement>(null)
   const pausedRef = useRef(paused)
   const syncRef = useRef<(() => void) | null>(null)
@@ -28,6 +28,7 @@ export default function EngineeringScene({ paused }: { paused: boolean }) {
     field.scale.setScalar(1.35)
     field.rotation.z = -.13
     scene.add(field)
+    if (!compact) {
     const surface = new THREE.RingGeometry(0, 3.15, 112, 28)
     const positions = surface.attributes.position
     const colors = new Float32Array(positions.count * 3)
@@ -57,6 +58,7 @@ export default function EngineeringScene({ paused }: { paused: boolean }) {
       const points = Array.from({ length: 145 }, (_, i) => new THREE.Vector3(Math.cos(i / 144 * Math.PI * 2) * radius, Math.sin(i / 144 * Math.PI * 2) * radius, -.24))
       field.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(points), ringMaterial))
     }
+    }
     const curves: THREE.CatmullRomCurve3[] = []
     for (let i = 0; i < 12; i++) {
       const offset = (i - 5.5) * .35
@@ -66,19 +68,21 @@ export default function EngineeringScene({ paused }: { paused: boolean }) {
       })
       const curve = new THREE.CatmullRomCurve3(points)
       curves.push(curve)
-      field.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(curve.getPoints(100)), new THREE.LineBasicMaterial({ color: i % 3 ? '#4289df' : '#28b8d7', transparent: true, opacity: .2 })))
+      field.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(curve.getPoints(100)), new THREE.LineBasicMaterial({ color: i % 3 ? '#4289df' : '#28b8d7', transparent: true, opacity: compact ? .5 : .2 })))
     }
     const particlePositions = new Float32Array(curves.length * 3 * 3)
     const particleGeometry = new THREE.BufferGeometry()
     particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3))
     const particles = new THREE.Points(particleGeometry, new THREE.PointsMaterial({ color: '#1861d8', size: .043, transparent: true, opacity: .8, sizeAttenuation: true }))
     field.add(particles)
+    if (!compact) {
     const grid = new THREE.GridHelper(28, 38, '#b4c5db', '#d0dbe9')
     grid.position.y = -2.2
     const gridMaterial = grid.material as THREE.Material
     gridMaterial.transparent = true
     gridMaterial.opacity = .22
     scene.add(grid)
+    }
     let alive = true, visible = false, broken = false, frame = 0, last = 0, elapsed = 4
     const render = () => {
       for (let i = 0; i < curves.length; i++) for (let j = 0; j < 3; j++) {
@@ -140,6 +144,6 @@ export default function EngineeringScene({ paused }: { paused: boolean }) {
       materials.forEach(material => material.dispose())
       renderer.dispose(); renderer.domElement.remove()
     }
-  }, [])
+  }, [compact])
   return <div className={`engineering-background${failed ? ' engineering-background-fallback' : ''}`} ref={hostRef} aria-hidden="true" />
 }

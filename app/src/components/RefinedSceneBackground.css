@@ -1,0 +1,9 @@
+.refined-background { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; isolation: isolate; background: #080a0f }
+.refined-background canvas,.refined-background-fallback,.refined-background-shade { position: absolute; inset: 0; width: 100%; height: 100% }
+.refined-background-fallback { background: radial-gradient(ellipse at 88% 35%,#22386755,transparent 65%),#080a0f }
+.refined-background canvas { display: block; z-index: 1; opacity: 0; transition: opacity .7s ease }
+.refined-background[data-renderer='fire'] canvas,.refined-background[data-renderer='water'] canvas { opacity: 1 }
+.refined-background-shade { z-index: 2; background: linear-gradient(90deg,#080a0ff5 0%,#080a0fda 28%,#080a0f55 59%,#080a0f08 84%),linear-gradient(180deg,#080a0f14,transparent 55%,#080a0f80) }
+.refined-background-fire .refined-background-shade { background: linear-gradient(90deg,#080a0ff5 0%,#080a0fb0 30%,#080a0f20 62%,transparent 85%),linear-gradient(180deg,#080a0f10,transparent 70%,#080a0f66) }
+@media(max-width:767px) { .refined-background-shade,.refined-background-fire .refined-background-shade { background: linear-gradient(90deg,#080a0fe8,#080a0f8c 52%,#080a0f30),linear-gradient(180deg,transparent,#080a0f44 70%,#080a0f99) } }
+@media(prefers-reduced-motion:reduce) { .refined-background canvas { transition: none } }

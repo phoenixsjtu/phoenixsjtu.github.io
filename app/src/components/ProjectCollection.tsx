@@ -1,7 +1,10 @@
-import { useState } from 'react'
-import { Expandable, ExpandableContent } from './cult/expandable'
 import { TextureCard } from './cult/texture-card'
 import { Arrow, GithubIcon } from './Icons'
+import {
+  MorphingDialog, MorphingDialogTrigger, MorphingDialogContainer,
+  MorphingDialogContent, MorphingDialogImage, MorphingDialogTitle,
+  MorphingDialogDescription, MorphingDialogClose,
+} from './motion-primitives/morphing-dialog'
 import './ProjectCollection.css'
 
 type Lang = 'en' | 'zh'
@@ -39,38 +42,49 @@ const projects: Project[] = [
 ]
 
 function ProjectCard({ project, lang }: { project: Project; lang: Lang }) {
-  const [expanded, setExpanded] = useState(false)
   const p = project[lang]
-  const detailsId = `project-${project.slug}-details`
-  const more = lang === 'en' ? 'Details' : '详情'
-  const close = lang === 'en' ? 'Close' : '收起'
   const paper = project.cover.kind === 'paper'
-  const coverLabel = paper ? (lang === 'en' ? 'Paper · Neurocomputing, 2023' : '论文 · Neurocomputing, 2023') : project.cover.kind === 'notebook' ? 'Jupyter Notebook' : 'GitHub README'
-  return <article className={`repository-item repository-${project.cover.kind}`} aria-labelledby={`title-${project.slug}`}>
-    <TextureCard className="repository-card">
-      <a className="repository-cover" href={project.cover.source} target="_blank" rel="noreferrer" aria-label={`${lang === 'en' ? 'Read source' : '阅读原文'}: ${p.title}`}>
-        <div className="repository-page"><img src={`/projects/${project.cover.file}`} alt={project.cover[lang]} loading="lazy" decoding="async" width={paper ? 953 : 1383} height={paper ? 1270 : 1255} /></div>
-        <span className="repository-cover-caption"><span>{coverLabel}</span><Arrow diagonal /></span>
-      </a>
-      <Expandable expanded={expanded} onToggle={() => setExpanded(!expanded)} expandDirection="vertical" expandBehavior="push">
+  const image = `${import.meta.env.BASE_URL}projects/${project.cover.file}`
+  const kind = paper ? 'Neurocomputing · 2023' : project.cover.kind === 'notebook' ? 'Jupyter Notebook' : 'GitHub README'
+  const preview = lang === 'en' ? 'Preview' : '预览'
+  const source = paper ? (lang === 'en' ? 'Read paper' : '阅读论文') : (lang === 'en' ? 'Read source' : '阅读文档')
+  return <article className={`repository-item ${paper ? 'repository-featured' : 'repository-resource'}`} aria-labelledby={`title-${project.slug}`}>
+    <MorphingDialog transition={{ type: 'spring', duration: .48, bounce: 0 }}>
+      <TextureCard className="repository-card">
+        <MorphingDialogTrigger className="repository-cover" aria-label={`${preview}: ${p.title}`}>
+          <div className="repository-page"><MorphingDialogImage src={image} alt={project.cover[lang]} width={paper ? 953 : 1383} height={paper ? 1270 : 1255} loading="lazy" decoding="async" /></div>
+          <span className="repository-preview-cue"><span>{preview}</span><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true"><path d="M3 7V3h4m6 0h4v4M3 13v4h4m6 0h4v-4" /></svg></span>
+        </MorphingDialogTrigger>
         <div className="repository-body">
-          <div className="repository-topline"><GithubIcon /><span>{p.type}</span></div>
+          <p className="repository-kind">{paper ? kind : p.type}</p>
           <h3 id={`title-${project.slug}`}>{p.title}</h3>
           <p className="repository-description">{p.description}</p>
-          <ExpandableContent preset="fade" id={detailsId} className="repository-expansion">
-            <div className="repository-details"><p>{p.detail}</p>{paper && <a className="repository-citation" href="https://doi.org/10.1016/j.neucom.2023.126391" target="_blank" rel="noreferrer">Combining the theoretical bound and deep adversarial network for machinery open-set diagnosis transfer<Arrow diagonal /></a>}<p className="repository-path">phoenixdyf / {project.slug}</p></div>
-          </ExpandableContent>
+          {paper && <p className="repository-authors">Yafei Deng, Jun Lv, Delin Huang, Shichang Du</p>}
           <div className="repository-actions">
-            <a href={`https://github.com/phoenixdyf/${project.slug}`} target="_blank" rel="noreferrer" aria-label={`${lang === 'en' ? 'View on GitHub' : '在 GitHub 查看'}: ${p.title}`}>GitHub<Arrow diagonal /></a>
-            <button type="button" onClick={() => setExpanded(!expanded)} aria-expanded={expanded} aria-controls={detailsId} aria-label={`${expanded ? close : more}: ${p.title}`}><span>{expanded ? close : more}</span><span className={`detail-symbol ${expanded ? 'expanded' : ''}`} aria-hidden="true">+</span></button>
+            {paper && <a className="paper-link" href="https://doi.org/10.1016/j.neucom.2023.126391" target="_blank" rel="noreferrer">{source}<Arrow diagonal /></a>}
+            <a href={`https://github.com/phoenixdyf/${project.slug}`} target="_blank" rel="noreferrer" aria-label={`${lang === 'en' ? 'View on GitHub' : '在 GitHub 查看'}: ${p.title}`}><GithubIcon /><span>{paper ? (lang === 'en' ? 'Code' : '代码') : 'GitHub'}</span><Arrow diagonal /></a>
           </div>
         </div>
-      </Expandable>
-    </TextureCard>
+      </TextureCard>
+      <MorphingDialogContainer>
+        <MorphingDialogContent className={`project-dialog ${paper ? 'project-dialog-paper' : ''}`}>
+          <MorphingDialogClose aria-label={lang === 'en' ? 'Close preview' : '关闭预览'} />
+          <div className="project-dialog-art"><MorphingDialogImage src={image} alt={project.cover[lang]} width={paper ? 953 : 1383} height={paper ? 1270 : 1255} /></div>
+          <div className="project-dialog-body">
+            <p className="repository-kind">{kind}</p>
+            <MorphingDialogTitle><h2>{p.title}</h2></MorphingDialogTitle>
+            <MorphingDialogDescription><p>{p.detail}</p></MorphingDialogDescription>
+            {paper && <div className="project-dialog-citation"><p>Combining the theoretical bound and deep adversarial network for machinery open-set diagnosis transfer</p><span>Yafei Deng, Jun Lv, Delin Huang, Shichang Du</span><span>Neurocomputing 548 (2023), 126391</span></div>}
+            <div className="project-dialog-links"><a className="paper-link" href={paper ? 'https://doi.org/10.1016/j.neucom.2023.126391' : project.cover.source} target="_blank" rel="noreferrer">{source}<Arrow diagonal /></a><a href={`https://github.com/phoenixdyf/${project.slug}`} target="_blank" rel="noreferrer">GitHub<Arrow diagonal /></a></div>
+            <p className="project-dialog-caption">{paper ? (lang === 'en' ? 'Original publication · First page' : '原始论文 · 首页') : (lang === 'en' ? 'Excerpt from the repository documentation' : '节选自仓库说明文档')}</p>
+          </div>
+        </MorphingDialogContent>
+      </MorphingDialogContainer>
+    </MorphingDialog>
   </article>
 }
 
 export default function ProjectCollection({ lang }: { lang: Lang }) {
   const orderedProjects = [...projects].sort((a, b) => Number(b.cover.kind === 'paper') - Number(a.cover.kind === 'paper'))
-  return <div className="repository-grid" id="work">{orderedProjects.map(project => <ProjectCard key={project.slug} project={project} lang={lang} />)}</div>
+  return <div className="repository-collection" id="work">{orderedProjects.map(project => <ProjectCard key={project.slug} project={project} lang={lang} />)}</div>
 }

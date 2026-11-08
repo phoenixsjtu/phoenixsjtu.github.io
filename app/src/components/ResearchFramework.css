@@ -1,27 +1,27 @@
-.research-section { padding-block: 72px 80px; background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line) }
-.research-section h2 { margin-bottom: 40px; text-align: center }
-.research-tablist { align-self: center; justify-content: center; border-bottom: 1px solid var(--line); border-radius: 0!important; padding: 0!important; background: transparent!important; gap: 24px; margin-bottom: 36px; width: 100% }
-.research-tablist button { font-size: var(--font-body); border: 0; min-height: 52px; padding: 12px 20px; border-radius: 0; color: var(--muted); text-align: center; line-height: 1.4 }
+.research-section { padding-top: 52px }
+.research-section>.section-heading { margin-bottom: 18px }
+.research-tablist { align-self: flex-start; justify-content: flex-start; border-bottom: 1px solid var(--line); border-radius: 0!important; padding: 0!important; background: transparent!important; gap: 32px; margin-bottom: 16px; width: 100% }
+.research-tablist button { border: 0; padding: 10px 0 14px; min-height: 48px; color: var(--muted); font-size: var(--font-meta); border-radius: 0; white-space: normal; text-align: left; line-height: 1.5; margin: 0!important }
 .research-tablist button[aria-selected=true] { color: var(--ink) }
 .research-tablist button>span[aria-hidden=true] { border-radius: 0; box-shadow: none; background: var(--ink); top: auto; bottom: -1px; height: 2px }
-.research-area-title { font-size: var(--font-title); margin: 0 0 12px }
-.research-methods { display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 0; gap: 8px 32px; color: var(--muted); font-size: var(--font-body) }
-.research-methods li { display: flex; align-items: center; gap: 10px }
-.research-methods li::before { content: ''; width: 4px; height: 4px; flex-shrink: 0; border-radius: 50%; background: var(--blue) }
-.project-section-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; margin: 32px 0 16px; font-size: var(--font-meta) }
-.project-section-meta>p:first-child { font-weight: 500 }
-.project-section-meta>p:last-child { color: var(--muted) }
-.project-section-meta a { color: var(--ink); font-weight: 500 }
-.project-section-meta a:hover { text-decoration: underline; text-underline-offset: 3px }
-.research-coming { margin-top: 32px; padding: 32px 0; border-top: 1px solid var(--line); min-height: 160px }
-.research-coming p { font-size: var(--font-title); font-weight: 500; margin-bottom: 8px }
+.research-area-title { font-size: 1rem; margin-bottom: 8px }
+.research-methods { display: flex; flex-wrap: wrap; gap: 6px 22px; list-style: none; padding: 0; margin: 0 0 24px; color: var(--muted); font-size: .8125rem }
+.research-methods li { display: flex; align-items: center; gap: 6px }
+.research-methods li:not(:last-child)::after { content: '·'; color: #9ca4b1; padding-left: 16px }
+.project-section-meta { display: none }
+.research-coming { padding: 30px 0 38px; border-bottom: 1px solid var(--line); min-height: 200px }
+.research-coming p { color: var(--ink); font-size: var(--font-title); margin-bottom: 8px }
 .research-coming span { color: var(--muted); font-size: var(--font-body) }
+.research-panel { padding-top: 3px }
+.research-panel:has(.research-coming) .research-methods { display: flex; flex-direction: column; gap: 8px; font-size: var(--font-body); margin-bottom: 0; margin-top: 8px }
+.research-panel:has(.research-coming) .research-methods li::after { display: none }
 @media(max-width:600px) {
-  .research-section { padding-block: 40px 44px }
-  .research-section h2 { margin-bottom: 24px }
-  .research-tablist { display: grid!important; grid-template-columns: 1fr 1fr 1.3fr; width: 100%; gap: 0; margin-bottom: 28px }
-  .research-tablist button { font-size: var(--font-meta); padding: 10px 5px; min-width: 0; white-space: normal; margin: 0!important }
+  .research-section { padding-top: 36px }
+  .research-tablist { display: grid!important; grid-template-columns: 1fr 1fr 1.4fr; gap: 12px; margin-bottom: 16px }
+  .research-tablist button { font-size: .8125rem; min-height: 52px; padding-bottom: 12px }
   .lang-zh .research-tablist { grid-template-columns: 1fr 1fr 1fr }
-  .research-methods { flex-direction: column; gap: 8px }
-  .project-section-meta { margin-top: 24px }
+  .research-methods { gap: 3px 10px; margin-bottom: 20px; font-size: .75rem }
+  .research-methods li:not(:last-child)::after { padding-left: 4px }
+  .research-coming { padding-top: 26px }
 }
+

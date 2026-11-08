@@ -1,0 +1,33 @@
+{
+  "downloaded": "2026-11-08",
+  "files": [
+    {
+      "path": "src/vendor/three-volumetric-fire/ThreeVolumetricFire.js",
+      "source": "https://raw.githubusercontent.com/Housz/ThreeVolumetricFire/ed1ee936cd451384a744bb6cd5c85454764b5ecc/src/ThreeVolumetricFire.js",
+      "bytes": 19557,
+      "sha256": "c9898f6cb516a1ece9af5e90f6854061e8fb01f696147d17f801c2b07ae12df5",
+      "git_blob_sha": "e473374ee612d7e02a280d2a1be110690a5c0b94"
+    },
+    {
+      "path": "public/backgrounds/fire/nzw.png",
+      "source": "https://raw.githubusercontent.com/Housz/ThreeVolumetricFire/ed1ee936cd451384a744bb6cd5c85454764b5ecc/examples/assets/nzw.png",
+      "bytes": 15111,
+      "sha256": "41241208b642f6dc4df032509e09b2db543447cbf6a262aa1b52c667fcf9d799",
+      "git_blob_sha": "709db71980c8669918a7064b61388bee6b963b27"
+    },
+    {
+      "path": "public/backgrounds/fire/firetex.png",
+      "source": "https://raw.githubusercontent.com/Housz/ThreeVolumetricFire/ed1ee936cd451384a744bb6cd5c85454764b5ecc/examples/assets/firetex.png",
+      "bytes": 4997,
+      "sha256": "b5b033cbab1c78e5c920066557e1252073ed16abd741f21778b53bd45414f94e",
+      "git_blob_sha": "8e370ac5d8ce90e7d5b526f95549404cb3e21e75"
+    },
+    {
+      "path": "public/backgrounds/water/waternormals.jpg",
+      "source": "https://raw.githubusercontent.com/mrdoob/three.js/7e89746a687bb88271253698fa108b1dd59825d0/examples/textures/waternormals.jpg",
+      "bytes": 248813,
+      "sha256": "add9912b158a4fe9c12421745babe68c44c8af75631ac4837236cb2a03bc373f",
+      "git_blob_sha": "9dfe03ce483a02fff31c35421094c53a333097bc"
+    }
+  ]
+}

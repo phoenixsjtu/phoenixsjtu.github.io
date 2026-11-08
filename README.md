@@ -2,7 +2,9 @@
 
 Bilingual personal homepage: [English](https://phoenixsjtu.github.io/?lang=en) · [中文](https://phoenixsjtu.github.io/?lang=zh).
 
-Research in physics + AI, digital twins, and predictive maintenance. Built with React, TypeScript, Vite, Motion, Three.js, and locally adapted Cult UI components.
+Research in physics + AI, digital twins, and predictive maintenance. The charcoal portfolio uses a cobalt/lilac volumetric flame by default, with an [optional reflective water background](https://phoenixsjtu.github.io/?lang=en&background=water).
+
+Built with React, TypeScript, Vite, Motion and the existing Three.js renderer. Cult UI research tabs and TextureCard, plus an adapted Motion Primitives Morphing Dialog, provide the interaction layer. The same content, paper covers, organization marks and career history are available in both languages.
 
 ## Develop
 
@@ -14,22 +16,27 @@ npm ci
 npm run dev
 ```
 
-## Build and publish
+## Build
 
 ```sh
 node build.mjs
 ```
 
-The script typechecks and builds `app/`, then copies its static output into the repository root. Review and commit both source and output. GitHub Pages publishes the `main` branch root; `.nojekyll` preserves the static build.
+The script typechecks and builds app/, replaces only the generated root assets directory, then copies the static build and approved background source archive into the repository root. Review and commit both source and generated output. GitHub Pages uses the main branch root; .nojekyll preserves the static build.
 
-## Source
+## Source and attribution
 
-- `app/src/`: bilingual content, research tabs, image-led project cards, career history, and original ambient engineering scene.
-- `app/public/`: organization logos, project covers, source attribution and dependency licenses.
-- `app/third-party/cult-ui/`: registry sources and provenance for TextureCard, Expandable and DirectionAwareTabs.
-- `app/cover-sources/`: public repository excerpts used to render document covers.
-- `app/DESIGN.md`: design decisions.
+- app/src/: bilingual introduction, research tabs, authentic publication previews, career rows and the shared 3D background lifecycle.
+- app/src/components/scenes/: flame and water scene composition. Flame is the default; background=water selects the alternative.
+- app/src/vendor/three-volumetric-fire/: unchanged downloaded Housz module and local TypeScript declarations.
+- app/public/: local textures, Geist font, organization logos, paper/document covers, source attribution and licenses.
+- app/third-party/: retained upstream source, version pins, hashes, notices and adaptation notes.
+- app/cover-sources/: public repository excerpts used to render document covers.
+- app/DESIGN.md: the approved visual system.
+- [Background source and texture package](downloads/refined-3d-backgrounds.zip): React/Vite integration source, original textures and licenses.
 
-The TPTLN cover is the original paper first page. Other covers are typeset README/Notebook excerpts, not papers or synthetic experimental results. See [cover sources](projects/SOURCES.md). The background is an original conceptual visualization, not measured or simulated data.
+Housz ThreeVolumetricFire is MIT, Copyright 2025 Housz. Official Three.js Water and its normal texture retain the Three.js MIT notice. The original module and textures are unchanged; local composition, color grading and lifecycle behavior are documented in app/third-party/. Earlier inactive material studies remain available in source. The backgrounds are decorative material effects, not measured flow or combustion results.
 
-The current account is [phoenixsjtu](https://github.com/phoenixsjtu); earlier open-source work remains on [phoenixdyf](https://github.com/phoenixdyf). The GitHub profile README is maintained in [phoenixsjtu/phoenixsjtu](https://github.com/phoenixsjtu/phoenixsjtu).
+The TPTLN cover is the original paper first page. Other covers are attributed README/Notebook excerpts; see [cover sources](projects/SOURCES.md). Current repositories remain under predictive maintenance; the other research areas retain their methods and forthcoming status.
+
+Current account: [phoenixsjtu](https://github.com/phoenixsjtu). Earlier open-source work: [phoenixdyf](https://github.com/phoenixdyf). The GitHub profile README is maintained in [phoenixsjtu/phoenixsjtu](https://github.com/phoenixsjtu/phoenixsjtu).

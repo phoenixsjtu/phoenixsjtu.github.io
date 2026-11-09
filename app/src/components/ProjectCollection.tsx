@@ -9,7 +9,7 @@ import './ProjectCollection.css'
 type Lang = 'en' | 'zh'
 const github = 'https://github.com/phoenixsjtu'
 const paper = 'https://doi.org/10.1016/j.neucom.2023.126391'
-const app = 'https://phoenixsjtu.github.io/PHM-Workbench/'
+const app = 'https://phm-studio.onrender.com/'
 const authors = 'Yafei Deng, Jun Lv, Delin Huang, Shichang Du'
 const paperTitle = 'Combining the theoretical bound and deep adversarial network for machinery open-set diagnosis transfer'
 const copy = {
@@ -23,8 +23,8 @@ const copy = {
     datasetDescription: '38 dataset entries for diagnosis, monitoring, and remaining useful life estimation.',
     browse: 'Browse datasets',
     code: ['TPTLN implementation', 'CWRU transfer learning experiments', 'Mechanical vibration feature reference'],
-    toolDescription: 'Import a sample vibration CSV, extract features, and compute its spectrum in the browser.',
-    preview: 'Open live demo', source: 'Source code',
+    toolDescription: 'Six modules for data standardization, feature extraction, preprocessing, signal analysis, feature exploration, and model evaluation.',
+    preview: 'Open PHM Studio',
   },
   zh: {
     phases: ['论文', '数据集', '算法代码', '界面工具'],
@@ -36,8 +36,8 @@ const copy = {
     datasetDescription: '38 条索引，覆盖故障诊断、状态监测和剩余寿命预测。',
     browse: '浏览数据集',
     code: ['TPTLN 算法实现', 'CWRU 轴承迁移学习实验', '机械振动特征参考'],
-    toolDescription: '载入示例振动 CSV，在浏览器里提取特征并计算频谱。',
-    preview: '打开在线演示', source: '源代码',
+    toolDescription: '六个模块：数据标准化、特征工程、数据预处理、核心图谱、信息溯源和模型评估。',
+    preview: '打开 PHM Studio',
   },
 }
 const codeRepos = [
@@ -101,7 +101,6 @@ export default function ProjectCollection({ lang }: { lang: Lang }) {
       <p>{t.toolDescription}</p>
       <div className="work-actions">
         <ExternalLink href={app} primary>{t.preview}</ExternalLink>
-        <ExternalLink href={`${github}/PHM-Workbench`}>{t.source}</ExternalLink>
       </div>
     </div>,
   ]

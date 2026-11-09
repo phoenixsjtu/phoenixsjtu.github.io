@@ -4,17 +4,9 @@
 .research-tablist button { border: 0; padding: 10px 0 14px; min-height: 48px; color: var(--muted); font-size: var(--font-meta); border-radius: 0; white-space: normal; text-align: left; line-height: 1.5; margin: 0!important }
 .research-tablist button[aria-selected=true] { color: var(--ink) }
 .research-tablist button>span[aria-hidden=true] { border-radius: 0; box-shadow: none; background: var(--ink); top: auto; bottom: -1px; height: 2px }
-.research-area-title { font-size: 1rem; margin-bottom: 8px }
 .research-methods { display: flex; flex-wrap: wrap; gap: 6px 22px; list-style: none; padding: 0; margin: 0 0 24px; color: var(--muted); font-size: .8125rem }
 .research-methods li { display: flex; align-items: center; gap: 6px }
 .research-methods li:not(:last-child)::after { content: '·'; color: #9ca4b1; padding-left: 16px }
-.project-section-meta { display: none }
-.research-coming { padding: 30px 0 38px; border-bottom: 1px solid var(--line); min-height: 200px }
-.research-coming p { color: var(--ink); font-size: var(--font-title); margin-bottom: 8px }
-.research-coming span { color: var(--muted); font-size: var(--font-body) }
-.research-panel { padding-top: 3px }
-.research-panel:has(.research-coming) .research-methods { display: flex; flex-direction: column; gap: 8px; font-size: var(--font-body); margin-bottom: 0; margin-top: 8px }
-.research-panel:has(.research-coming) .research-methods li::after { display: none }
 @media(max-width:600px) {
   .research-section { padding-top: 36px }
   .research-tablist { display: grid!important; grid-template-columns: 1fr 1fr 1.4fr; gap: 12px; margin-bottom: 16px }
@@ -22,6 +14,5 @@
   .lang-zh .research-tablist { grid-template-columns: 1fr 1fr 1fr }
   .research-methods { gap: 3px 10px; margin-bottom: 20px; font-size: .75rem }
   .research-methods li:not(:last-child)::after { padding-left: 4px }
-  .research-coming { padding-top: 26px }
 }
 

@@ -13,7 +13,7 @@ const copy = {
     skip: 'Skip to content', nav: ['Work', 'Experience'], github: 'GitHub profile',
     role: 'Research Engineer', headline: 'Physics, data, and intelligent equipment.',
     intro: 'At AMEC, I research digital twins and AI for semiconductor equipment.',
-    scholar: 'Google Scholar', current: 'Current account', previous: 'Earlier work',
+    scholar: 'Google Scholar', viewWork: 'View work',
     pause: 'Pause background motion', resume: 'Resume background motion',
     experience: 'Experience', experienceNote: 'Research across industry and academia.',
     careers: [
@@ -27,7 +27,7 @@ const copy = {
     skip: '跳至正文', nav: ['研究作品', '个人履历'], github: 'GitHub 主页',
     role: '研究工程师', headline: '物理机理、数据与设备智能。',
     intro: '现于中微，面向半导体设备开展数字孪生与人工智能研究。',
-    scholar: '谷歌学术', current: '当前账号', previous: '早期工作',
+    scholar: '谷歌学术', viewWork: '查看作品',
     pause: '暂停背景动画', resume: '播放背景动画',
     experience: '个人履历', experienceNote: '从学术研究到工业设备智能化。',
     careers: [
@@ -76,9 +76,9 @@ export default function App() {
           <div className="hero-identity"><p>{t.role}</p><h1 id="hero-title">Yafei Deng<span aria-hidden="true">.</span></h1></div>
           <p className="hero-headline">{t.headline}</p>
           <p className="hero-intro">{t.intro}</p>
-          <div className="hero-links"><a href={scholar} target="_blank" rel="noreferrer">{t.scholar}<Arrow diagonal /></a><a href={profile} target="_blank" rel="noreferrer">GitHub<Arrow diagonal /></a></div>
+          <div className="hero-links"><a href="#research">{t.viewWork}<Arrow /></a><a href={scholar} target="_blank" rel="noreferrer">{t.scholar}<Arrow diagonal /></a></div>
         </div>
-        <div className="hero-bottom"><p className="account-note"><span>{t.current} <a href={profile} target="_blank" rel="noreferrer">@phoenixsjtu</a></span><span>{t.previous} <a href="https://github.com/phoenixdyf" target="_blank" rel="noreferrer">@phoenixdyf</a></span></p><button className="motion-toggle" type="button" onClick={() => setMotionOverride(!paused)} aria-label={paused ? t.resume : t.pause} aria-pressed={!paused} title={paused ? t.resume : t.pause}><span className="motion-state" aria-hidden="true" /><span className="motion-label">{lang === 'en' ? 'Motion' : '背景'}</span><svg viewBox="0 0 16 16" aria-hidden="true">{paused ? <path d="m5 3 7 5-7 5Z" fill="currentColor" /> : <path d="M5 3v10M11 3v10" stroke="currentColor" strokeWidth="1.5" />}</svg></button></div>
+        <div className="hero-bottom"><button className="motion-toggle" type="button" onClick={() => setMotionOverride(!paused)} aria-label={paused ? t.resume : t.pause} aria-pressed={!paused} title={paused ? t.resume : t.pause}><span className="motion-state" aria-hidden="true" /><span className="motion-label">{lang === 'en' ? 'Motion' : '背景'}</span><svg viewBox="0 0 16 16" aria-hidden="true">{paused ? <path d="m5 3 7 5-7 5Z" fill="currentColor" /> : <path d="M5 3v10M11 3v10" stroke="currentColor" strokeWidth="1.5" />}</svg></button></div>
       </section>
       <ResearchFramework lang={lang} />
       <section className="experience-section" id="experience" aria-labelledby="experience-title">

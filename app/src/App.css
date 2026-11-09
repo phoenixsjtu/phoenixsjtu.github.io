@@ -34,14 +34,14 @@ svg { flex-shrink: 0 }
 .wordmark-dot { color: #9eb8f1; margin-left: 1px }
 .nav-links { display: flex; gap: 30px; margin-left: auto; color: var(--muted); font-size: var(--font-meta) }
 .nav-links a { min-height: 44px; display: inline-flex; align-items: center }
-.nav-links a:hover,.account-note a:hover,.site-footer a:hover { color: #fff }
+.nav-links a:hover,.site-footer a:hover { color: #fff }
 .nav-actions { display: flex; align-items: center; gap: 24px }
 .language-switch { display: flex; gap: 4px }
 .language-switch button { border: 0; background: none; color: var(--muted); min-height: 36px; min-width: 34px; border-radius: 999px; font-size: .8125rem }
 .language-switch button[aria-pressed=true] { background: #f2f4fa; color: #080a0f }
 .nav-github { width: 38px; height: 38px; display: grid; place-items: center; color: #e3e9f7; border: 1px solid #b6c7e736; border-radius: 50%; background: #10151f }
 .nav-github:hover { border-color: #a2b1d4 }
-.hero { position: relative; padding: clamp(80px, 9vw, 128px) 0 40px }
+.hero { position: relative; padding: clamp(56px, 7vw, 96px) 0 28px }
 .hero::before { content: ''; position: absolute; left: calc(-1 * var(--gutter)); right: calc(-1 * var(--gutter)); bottom: 0; border-bottom: 1px solid var(--line) }
 .hero::after { content: ''; position: absolute; right: calc(-1 * var(--gutter) - 5px); bottom: -6px; width: 11px; height: 11px; background: linear-gradient(#8f9bb4,#8f9bb4) center/1px 11px no-repeat,linear-gradient(#8f9bb4,#8f9bb4) center/11px 1px no-repeat }
 .hero-copy { position: relative; max-width: 790px }
@@ -57,9 +57,7 @@ svg { flex-shrink: 0 }
 .hero-links a:first-child:hover { background: #dbe5ff; border-color: #dbe5ff }
 .hero-links a:last-child:hover { background: #202b40; border-color: #899abe }
 .hero-links svg { width: 14px; height: 14px }
-.hero-bottom { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 68px }
-.account-note { display: flex; flex-wrap: wrap; gap: 8px 30px; font-size: .8125rem; color: var(--muted) }
-.account-note a { color: #d8deed; margin-left: 5px }
+.hero-bottom { position: relative; display: flex; align-items: center; justify-content: flex-end; margin-top: 32px }
 .motion-toggle { display: flex; align-items: center; gap: 8px; border: 1px solid #b6c7e733; background: #111622; min-height: 36px; border-radius: 999px; padding: 7px 12px; color: #c1cbdf; font-size: .75rem; flex-shrink: 0 }
 .motion-toggle:hover { border-color: #8d9dbd }
 .motion-toggle svg { width: 12px; height: 12px }
@@ -86,8 +84,7 @@ svg { flex-shrink: 0 }
 @media(max-width:900px) {
   :root { --gutter: 32px }
   .navigation { gap: 28px; min-height: 80px }
-  .hero { padding-top: 88px }
-  .hero-bottom { margin-top: 52px }
+  .hero { padding-top: 66px }
   .section-heading { align-items: start }
 }
 @media(max-width:600px) {
@@ -98,15 +95,14 @@ svg { flex-shrink: 0 }
   .nav-actions { gap: 8px }
   .nav-github { display: none }
   .wordmark { font-size: 1.375rem }
-  .hero { padding-top: 64px; padding-bottom: 30px }
+  .hero { padding-top: 46px; padding-bottom: 22px }
   .hero-identity>p { margin-bottom: 20px; font-size: .8125rem }
   .hero-identity h1 { font-size: clamp(2.75rem,10vw,3.5rem) }
   .hero-headline { font-size: 1.5rem; line-height: 1.5; margin-top: 20px }
   .hero-intro { margin-top: 14px; font-size: .9375rem }
   .hero-links { gap: 10px; margin-top: 26px }
   .hero-links a { padding-inline: 17px }
-  .hero-bottom { margin-top: 46px; gap: 12px }
-  .account-note { flex-direction: column; gap: 5px; font-size: .75rem }
+  .hero-bottom { margin-top: 18px }
   .motion-label { display: none }
   .motion-toggle { padding-inline: 10px }
   .section-heading { flex-direction: column; gap: 8px; margin-bottom: 26px }
